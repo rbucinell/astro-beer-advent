@@ -1,4 +1,4 @@
-# Astro-HTMX-Typescript-Tailwind Baisc Template
+# Beer Advent 
 
 A barebones scaffold for starting an Astro/HTMX/Typescript/Tailwind project. 
 
