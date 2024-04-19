@@ -1,0 +1,28 @@
+---
+import AssignmentNumber from "@components/AssignmentNumber.astro";
+
+const { day1, day2, first, last, img, admin } = Astro.props;
+---
+<div class="flex flex-row justify-between bg-white text-gray-700 drop-shadow-lg border-b border-b-gray-400 
+            rounded mx-auto w-3/4 max-w-screen-md m-1">
+
+    <div class="flex">
+        <div class="flex justify-between items-center m-1">
+            <div class="w-12 h-12 bg-gray-300 rounded-full">
+                <img src={img} class=" rounded-full" >
+            </div>
+        </div> 
+        <div id="name" class="flex flex-col justify-center">
+            <p class="text-lg font-semibold">{`${first} ${last}`}</p>
+            { admin && <span class="bg-blue-400 rounded-md max-w-min px-1">Admin</span>}
+        </div>
+
+    </div>
+
+    <div id="numbers" class="flex justify-between items-center m-2 text-lg font-bold">
+        <AssignmentNumber number={day1} />
+        <AssignmentNumber number={day2} />
+    </div>
+
+    
+</div>

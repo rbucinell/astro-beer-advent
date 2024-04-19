@@ -12,6 +12,7 @@
   "author": "Ryan Bucinell",
   "license": "MIT",
   "dependencies": {
+    "@astrojs/db": "^0.10.5",
     "@astrojs/tailwind": "^5.0.4",
     "astro": "^4.0.7",
     "astro-htmx": "^1.0.5",

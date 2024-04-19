@@ -1,5 +1,10 @@
 ---
+import AssignmentCard from "@components/AssignmentCard.astro";
 import Layout from "@layouts/layout.astro";
+import { db, Participants } from 'astro:db';
+
+
+const participants = await db.select().from(Participants);
 
 let isSubmitted = false;
 if (Astro.request.method === "POST") {
@@ -7,8 +12,8 @@ if (Astro.request.method === "POST") {
 }
 ---
 <Layout title="Home Page">
-    <h1 class="font-bold text-color-orange">Hello, Astro, HTMX, Tailwind</h1>    
-    <main>
+    <div slot="content" class="container">
+        <h1 class="font-bold text-color-orange">Hello, Astro, HTMX, Tailwind</h1>
         <form hx-post="" hx-swap="innerHTML" hx-select="form">
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Click Me!</button>
             {isSubmitted && 
@@ -20,7 +25,20 @@ if (Astro.request.method === "POST") {
                     <p class="font-bold">You clicked the button</p>
                     </div>
                 </div>
+                
             </div>}
         </form>
-      </main>
+
+        <main class="w-100 border border-red-600">
+
+            <div class="flex-col">
+                {participants.map(({id,name,xmas,days,img,event}) => {
+                        const daysArr = JSON.parse(days);
+                        return <AssignmentCard day1={daysArr[0]} day2={daysArr[1]} first={name} last={xmas} img={img} admin={false}/>                        
+                })}
+                <!-- <AssignmentCard day1="01" day2="02" first="Ryan" last="Bucinell" img="/img/rmb.png" /> -->
+            </div>
+
+        </main>
+    </div>
 </Layout>
