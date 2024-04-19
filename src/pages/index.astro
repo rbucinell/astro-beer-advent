@@ -13,7 +13,7 @@ if (Astro.request.method === "POST") {
 ---
 <Layout title="Home Page">
     <div slot="content" class="container">
-        <h1 class="font-bold text-color-orange">Hello, Astro, HTMX, Tailwind</h1>
+        <!-- <h1 class="font-bold text-color-orange">Hello, Astro, HTMX, Tailwind</h1>
         <form hx-post="" hx-swap="innerHTML" hx-select="form">
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Click Me!</button>
             {isSubmitted && 
@@ -27,18 +27,15 @@ if (Astro.request.method === "POST") {
                 </div>
                 
             </div>}
-        </form>
+        </form> -->
 
-        <main class="w-100 border border-red-600">
-
+        <main class="w-100">
             <div class="flex-col">
-                {participants.map(({id,name,xmas,days,img,event}) => {
+                {participants.map(({id,name,xmas,days,img, event, isAdmin}) => {
                         const daysArr = JSON.parse(days);
-                        return <AssignmentCard day1={daysArr[0]} day2={daysArr[1]} first={name} last={xmas} img={img} admin={false}/>                        
+                        return <AssignmentCard day1={daysArr[0]} day2={daysArr[1]} first={name} last={xmas} img={img} isAdmin={isAdmin}/>                        
                 })}
-                <!-- <AssignmentCard day1="01" day2="02" first="Ryan" last="Bucinell" img="/img/rmb.png" /> -->
             </div>
-
         </main>
     </div>
 </Layout>
