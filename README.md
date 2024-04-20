@@ -11,3 +11,5 @@ npm install
 ```
 npm run dev
 ```
+
+https://studio.astro.build/rbucinell/beer-advent/data
