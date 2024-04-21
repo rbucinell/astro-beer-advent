@@ -3,7 +3,6 @@ import AssignmentCard from "@components/AssignmentCard.astro";
 import Layout from "@layouts/layout.astro";
 import { db, Participants } from 'astro:db';
 
-
 const participants = await db.select().from(Participants);
 
 let isSubmitted = false;
@@ -29,7 +28,7 @@ if (Astro.request.method === "POST") {
             </div>}
         </form> -->
 
-        <main class="w-100">
+        <main>
             <div class="flex-col">
                 {participants.map(({id,name,xmas,days,img, event, isAdmin}) => {
                         const daysArr = JSON.parse(days);

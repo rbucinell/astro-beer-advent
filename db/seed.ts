@@ -1,4 +1,4 @@
-import {db, Participants } from 'astro:db';
+import {Beers, db, Participants } from 'astro:db';
 
 export default async function() {
 
@@ -21,6 +21,22 @@ export default async function() {
             isAdmin: p.isAdmin ?? false
         }
     }))
+
+    await db.insert(Beers).values( {
+         
+            id: Math.random() * Number.MAX_VALUE,
+            beer: "Spider Vice",
+            brewer: "Spider Bite Beer Company",
+            type: "American IPA",
+            year: 2018,
+            day: 2,
+            abv: 5.9,
+            person: "Bucinell",
+            beeradvocate: "https://www.beeradvocate.com/beer/profile/27243/175767/",
+            untappd: "https://untappd.com/b/spider-bite-beer-company-spider-vice/1106533",
+            state: "something"
+        }
+    )
 }
 
 // import {db, Participants } from 'astro:db';

@@ -1,0 +1,29 @@
+---
+import Layout from "@layouts/layout.astro";
+import BeerListItem from "@components/history/BeerListItem.astro";
+
+import { db, Beers } from 'astro:db';
+const beers = await db.select().from(Beers);
+---
+<Layout title="History">
+    <div slot="content" class="container  flex flex-col flex-1">
+        <main class="p-2  flex flex-col flex-1">
+            <input type="text" class="w-full border-b-2 mb-3" placeholder="Search">
+
+            <ul class="overflow-clip flex flex-col flex-1">
+                {
+                    beers.map( b => <BeerListItem beer={b.beer} brewer={b.brewer} year={b.year} untappd={b.untappd} beeradvocate={b.beeradvocate} />)
+                }
+                {
+                    Array.from(Array(20).keys()).map( _ => <BeerListItem 
+                        beer="Lorem Impsum" 
+                        brewer="Dul Sadlor Amet" 
+                        year="2018" 
+                        untappd="https://untappd.com/" 
+                        beeradvocate="https://www.beeradvocate.com/beer/" />)
+                }
+                
+            </ul>
+        </main>
+    </div>
+</Layout>
